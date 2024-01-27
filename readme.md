@@ -1,0 +1,2 @@
+
+`odin run src`
