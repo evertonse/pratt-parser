@@ -61,8 +61,12 @@ package pratt
 
 
 KEYWORDS := map[string]Token{
-    "fn" = Token{keyword = "fn", kind='k'},
-    "eq" = Token{keyword = "eq", kind='k'}, // Equality test a eq 2 iff a == 2
+    "fn"  = Token{keyword = "fn",  kind='k'},
+    "eq"  = Token{keyword = "eq",  kind='k'}, // Equality test a eq 2 iff a == 2
+    "lt"  = Token{keyword = "lt",  kind='k'}, // Less than
+    "gt"  = Token{keyword = "gt",  kind='k'}, // Greater than
+    "or"  = Token{keyword = "or",  kind='k'}, // Greater than
+    "and" = Token{keyword = "and", kind='k'}, // Greater than
 }
 
 Token:: struct {
@@ -73,7 +77,7 @@ Token:: struct {
          .      number: stores a i64 integer for a Expr_Number 
          .      identifier: stores the string for an identifier Expr_Identifier
         */
-        number: i64,
+        number: union{i64,f64},
         identifier: string,
         keyword: string,
     },
@@ -153,8 +157,19 @@ precedence :: proc(token: Token, is_prefix: bool = false) -> i64 {
     else {
         switch token.kind {
             case '(': prec = 500 // func_call
-            case 'k': prec = 5; assert(token.keyword == "eq" );// Equality "eq" keyword
-
+            case 'k':
+                switch token.keyword {
+                    /* 
+                     . We want this a `a gt 1 or b lt 2 == c gt 3 and d lt 4`
+                     . to be parsed like this `(((a gt 1) or (b lt 2)) == ((c gt 3) and (d lt 4)))`
+                     */
+                    case "eq":
+                        prec = 2;
+                    case "or", "and":
+                        prec = 3
+                    case "lt", "gt":
+                        prec = 4
+                }
             case '+': prec = 10  // infix
             case '-': prec = 10  // infix
             case '*': prec = 20  // infix
@@ -167,7 +182,7 @@ precedence :: proc(token: Token, is_prefix: bool = false) -> i64 {
              . like this 1 + 2 ? 3 : 4 == (1 + 2) ? 3 : 4
              . to achieve that '?' must have lower prioritty than all binary operators
             */
-            case '?': prec = 3  // mixfix
+            case '?': prec = 1  // mixfix
 
             case '~': prec = 50  // postfix
             case '!': prec = 400 // postfix
@@ -232,6 +247,7 @@ lex :: proc(input :[]u8) -> []Token {
 
         case '0'..='9': // number
             start := cursor
+            found_dot := false
             for c >= '0' &&  c <= '9' {
                 cursor += 1
                 col += 1
@@ -239,10 +255,33 @@ lex :: proc(input :[]u8) -> []Token {
                     break
                 }
                 c = input[cursor]
+                if c == '.'  {
+                    if !found_dot {
+
+                        found_dot = true
+                        cursor += 1
+                        col += 1
+                        if int(cursor) >=  len(input) {
+                            break
+                        }
+                        c = input[cursor]
+                    } else {
+                        error(Token{line=line, col=col}, "Multiple dots '.' in fractional number")
+
+                    }
+                }
             }
 
+
             str_num := string(input[start:cursor])
-            num, ok := str.parse_i64(str_num)
+            num: union{i64, f64} = ---
+            ok := false
+            if found_dot {
+                num, ok = str.parse_f64(str_num)
+            }
+            else {
+                num, ok = str.parse_i64(str_num)
+            }
 
             if !ok {
                 panic(fmt.tprint("Conversion of", str_num, "to i64 failed") )
@@ -255,7 +294,7 @@ lex :: proc(input :[]u8) -> []Token {
             append(&tokens, token)
 
         case:
-            if !(c == '_') && !is_letter(c) do panic(fmt.tprint("Not allowed character", rune(c)) )
+            if !(c == '_') && !is_letter(c) do error(Token{line=line, col=col}, fmt.tprintf("Not allowed character `%v`", rune(c)) )
             start := cursor
             /* identifiers cant contain numbers */
             for c == '_' || is_letter(c)  {
@@ -264,6 +303,9 @@ lex :: proc(input :[]u8) -> []Token {
                     break
                 }
                 c = input[cursor]
+                if(is_digit(c)) {
+                    error(Token{line=line, col=col}, fmt.tprintf("Not allowed character number in as identifier `%v` ", rune(c)) )
+                }
             }
             token.identifier = string(input[start:cursor])
             /* Check if it is keyword by hashmap */
@@ -1134,7 +1176,11 @@ walker_interp :: proc(ast: ^Ast) -> f64 {
 
         case Expr_Number:
             expr := cast(^Expr_Number)ast;
-            val = f64(expr.number.number)
+            number := expr.number.number
+            switch _ in  number {
+                case i64:  val = f64(number.(i64))
+                case f64:  val = number.(f64)
+            } 
 
         case Expr_Identifier:
             expr := cast(^Expr_Identifier)ast;
@@ -1192,13 +1238,30 @@ walker_interp :: proc(ast: ^Ast) -> f64 {
                 val = left / right
             } else if expr.op.kind == '^' {
                 val = math.pow(left, right)
-            } else if expr.op.kind == 'k' && expr.op.keyword  == "eq" {
-                val = 0
-                if left == right  {
-                    val = 1
+            } else if expr.op.kind == 'k'  {
+                switch expr.op.keyword {
+                    case "eq":
+                        if left == right  {
+                            val = 1
+                        }
+                    case "lt":
+                        if left < right  {
+                            val = 1
+                        }
+                    case "gt":
+                        if left > right  {
+                            val = 1
+                        }
+                    case "or":
+                        if left == 1  || right == 1  {
+                            val = 1
+                        }
+                    case "and":
+                        if left == 1  && right == 1  {
+                            val = 1
+                        }
                 }
             }
-
 
         case:
             assert(false,"walker_interp generic case")
@@ -1260,18 +1323,21 @@ walker_paren :: proc(ast: ^Ast) -> string {
         case Expr_Prefix:
             ast := cast(^Expr_Prefix)ast;
             val = walker(ast.right)
-            val = fmt.tprint("(", ast.op.kind, val, ")", sep="")
+            op_str := tprint(ast.op.kind) if ast.op.kind != 'k' else ast.op.keyword
+            val = fmt.tprint("(", op_str, val, ")", sep="")
 
         case Expr_Postfix:
             ast := cast(^Expr_Postfix)ast;
             val = walker(ast.left)
-            val = fmt.tprint("(", val, ast.op.kind, ")" , sep="")
+            op_str := tprint(ast.op.kind) if ast.op.kind != 'k' else ast.op.keyword
+            val = fmt.tprint("(", val, op_str, ")" , sep="")
 
         case Expr_Infix:
             ast := cast(^Expr_Infix)ast;
             left  := walker(ast.left)
             right := walker(ast.right)
-            val = fmt.tprint("(", left, ' ', ast.op.kind, ' ', right, ")", sep="")
+            op_str := tprint(ast.op.kind) if ast.op.kind != 'k' else ast.op.keyword
+            val = fmt.tprint("(", left, ' ', op_str, ' ', right, ")", sep="")
 
         case Expr_Grouped:
             ast := cast(^Expr_Grouped)ast;
@@ -1340,173 +1406,6 @@ print_tokens::proc (tokens: []Token) {
             print(", ", sep="")
         }
         println(']')
-    }
-}
-
-main :: proc() {
-    // test_all()
-
-    test(`
-        fact = fn(a) a eq 1 ? 1: fact(a-1);
-        fact(2)
-    `, math.tan(f64(98)))
-    result()
-}
-
-
-/*-------------------------------------------------------------------------------------------------*
- *---------------------------------------- Tests --------------------------------------------------*
- *-------------------------------------------------------------------------------------------------*
-*/
-
-tests_passed := 0
-tests_total := 0 
-tests_failed := [dynamic]string{}
-
-add_test_error :: proc(input, expected, output: string) {
-    append(&tests_failed, fmt.tprintf("input:\n%v\nexpected:\n%v\ngot:\n%v\n", input, expected, output))
-}
-
-
-test :: proc{test_interp, test_paren}
-
-test_all :: proc() {
-    using fmt
-
-    // Assignments and interpretation
-    test(`
-        a = 1;
-        b = 2;
-        c = 3;
-        d = 4;
-
-        val = fn(a,b,c,d) d-c-b-a; # we have access to outter scope, that is global
-        val(a,b,c,d, 2, 4 ,4) # we allow to pass more
-    `, 4-3-2-1)
-
-    test(`
-        cos = fn(a) a!;  # postfix '!' means cossine
-        sin = fn(a) !a;  # prefix '!' means sine
-        tan = fn(a) sin(a)/cos(a); # we have access to functions in outter scope
-
-        val = tan(98);    
-        val 
-    `, math.tan(f64(98)))
-
-    // Function call.
-    test("a()", "a()")
-    test("a(b)", "a(b)")
-    test("a(b, c)", "a(b, c)")
-    test("a(b)(c)", "a(b)(c)")
-    test("a(b) + c(d)", "(a(b) + c(d))")
-
-    // Ternary
-    test("b ? c : d", "(b ? c : d)")
-    test("b ? c : d ? e : f", "(b ? c : (d ? e : f))")
-    test("b ? c : d ? e : f ? g : h", "(b ? c : (d ? e : (f ? g : h)))")
-    test("a(b ? c : d, e + f)", "a((b ? c : d), (e + f))")
-    //
-    //
-    // Unary precedence.
-    test("~!-+a", "(~(!(-(+a))))")
-    test("a!!!", "(((a!)!)!)")
-
-    // Unary and binary predecence.
-    test("!a + b", "((!a) + b)")
-    test("-a * b", "((-a) * b)")
-    test("~a ^ b", "((~a) ^ b)")
-    test("-a!", "(-(a!))")
-    test("!a!", "(!(a!))")
-
-    // Binary precedence.
-    test("a - b + c * d ^ e - f / g", "(((a - b) + (c * (d ^ e))) - (f / g))")
-    // test("a = b + c * d ^ e - f / g", "(a = ((b + (c * (d ^ e))) - (f / g)))")
-
-    /* first fo the power '^' operator then do the  unary '-' as in math */
-    test("-1^2", "(-(1 ^ 2))") 
-
-    // Binary associativity.
-    // test("a = b = c", "(a = (b = c))")
-    test("a + b - c", "((a + b) - c)")
-    test("a * b / c", "((a * b) / c)")
-    test("a ^ b ^ c", "(a ^ (b ^ c))")
-
-    // Conditional operator.
-    test("a ? b : c ? d : e", "(a ? b : (c ? d : e))")
-    test("a ? b ? c : d : e", "(a ? (b ? c : d) : e)")
-    test("a + b ? c * d : e / f", "((a + b) ? (c * d) : (e / f))")
-
-    // Grouping.
-    test("a + (b + c) + d", "((a + (b + c)) + d)")
-    test("a ^ (b + c)", "(a ^ (b + c))")
-    test("(!a)!", "((!a)!)")
-}
-
-test_paren :: proc(input, expected: string, should_error:=false) -> ^Ast{
-    reset()
-    tests_total += 1 
-
-    src := transmute([]u8)input
-
-    tokens = lex(src)
-    print_tokens(tokens)
-
-    ast := parse()
-    walker_print(ast)
-    output := walker_paren(ast)
-    if output == expected {
-        tests_passed += 1
-    } else {
-        if should_error { 
-            tests_passed += 1
-        } else {
-            add_test_error(input, expected, output)
-        }
-    }
-    return ast
-}
-
-test_interp :: proc(input: string, expected: f64) -> ^Ast{
-    reset()
-    tests_total += 1 
-
-    src := transmute([]u8)input
-    tokens = lex(src)
-    ast := parse()
-    walker_print(ast)
-
-    output := walker_interp(ast)
-
-    if  output == expected {
-        tests_passed += 1
-    } else {
-        add_test_error(input, fmt.tprint(expected), fmt.tprint(output))
-    }
-    return ast
-}
-
-
-result :: proc() {
-    using fmt
-
-    total := tests_total
-    passed := tests_passed
-    failed := total - passed
-    // Show the results.
-    if passed == total {
-        if passed == 1 {
-            println("Passed ", passed, "test.")
-        } else {
-            println("Passed all", passed, "tests.")
-        }
-    } else {
-
-        println("----")
-        println("Failed", failed, "out of", total,  "tests.")
-        for s in tests_failed {
-            println(s)
-        }
-        os.exit(69)
     }
 }
 
