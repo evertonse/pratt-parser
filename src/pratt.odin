@@ -62,6 +62,7 @@ package pratt
 
 KEYWORDS := map[string]Token{
     "fn" = Token{keyword = "fn", kind='k'},
+    "eq" = Token{keyword = "eq", kind='k'}, // Equality test a eq 2 iff a == 2
 }
 
 Token:: struct {
@@ -87,7 +88,7 @@ Token:: struct {
      .   kind:
      .       'n'  number 
      .       'i'  identifier
-     .       'k'  keyword only 'fn', to give a taste how it could be done for other keywords
+     .       'k'  keyword  'fn' for defining function, 'eq' for equality test
      .       ';'  end of statement
      . 
      .       '*'  mul infix, left associative
@@ -99,8 +100,8 @@ Token:: struct {
      .                ex: `1?2:3?4:5 == (1?2:(3?4:5))`
      .                ex: `1 ? 2 : 3 == 2;  0 ? 2 : 3  == 3`
      .                more information: https://stackoverflow.com/questions/36319740/ternary-operator-associativity
-     .       '!'  prefix operator !a == (a-1), but also as postfix a! == (a+1)
-     .       '~'  prefix operator ~a == cos(a), but also as postfix a~ == sin(a) 
+     .       '!'  prefix operator !a == sin(a), but also as postfix a! == cos(a)
+     .       '~'  prefix operator ~a == a-1, but also as postfix a~ == a+1 
      .       '='  assignment 
      .       '('  prefix for grouping expression like a * (b + c). Also '(' is infix for function calls like a(b).
      .       ')'  closing parenthesis
@@ -152,6 +153,7 @@ precedence :: proc(token: Token, is_prefix: bool = false) -> i64 {
     else {
         switch token.kind {
             case '(': prec = 500 // func_call
+            case 'k': prec = 5; assert(token.keyword == "eq" );// Equality "eq" keyword
 
             case '+': prec = 10  // infix
             case '-': prec = 10  // infix
@@ -165,7 +167,7 @@ precedence :: proc(token: Token, is_prefix: bool = false) -> i64 {
              . like this 1 + 2 ? 3 : 4 == (1 + 2) ? 3 : 4
              . to achieve that '?' must have lower prioritty than all binary operators
             */
-            case '?': prec = 5  // mixfix
+            case '?': prec = 3  // mixfix
 
             case '~': prec = 50  // postfix
             case '!': prec = 400 // postfix
@@ -522,10 +524,10 @@ parse_left_denotations :: proc (left: ^Expr) -> ^Expr {
     assoc := associativity(token)
     expr : ^Expr = nil
     switch token.kind {
-    case '+', '-', '*', '/', '^': /* infix */
+    case '+', '-', '*', '/', '^', 'k': /* infix */
         ast := new(Expr_Infix)
         ast.left  = left
-        ast.op    = next({'+', '-', '*', '/', '^'})
+        ast.op    = next({'+', '-', '*', '/', '^', 'k'})
         ast.right = parse_expr(prec)
         expr = ast
 
@@ -962,7 +964,8 @@ walker_print :: proc(ast: ^Ast, indent:=0) {
 
         case Expr_Infix:
             ast := cast(^Expr_Infix)ast;
-            print(ast.kind, '=', ast.op.kind)
+            op_str := tprint(ast.op.kind) if ast.op.kind != 'k' else ast.op.keyword
+            print(ast.kind, '=',op_str )
             walker(ast.left, indent)
             walker(ast.right, indent)
 
@@ -979,10 +982,10 @@ walker_print :: proc(ast: ^Ast, indent:=0) {
         case Expr_Mixfix:
             ast := cast(^Expr_Mixfix)ast;
             print(ast.kind)
-            walker(ast.left, indent)
             print(' ' ,ast.op1.kind, sep="")
-            walker(ast.mid, indent)
             print(' ' ,ast.op2.kind, sep="")
+            walker(ast.left, indent)
+            walker(ast.mid, indent)
             walker(ast.right, indent)
 
         case Expr_Function_Call:
@@ -1025,6 +1028,13 @@ scope_exit :: proc() -> Scope{
     return pop(&scopes)
 }
 
+scope_reset :: proc() {
+    for s, idx in scopes {
+        delete(s)
+        ordered_remove(&scopes, idx)
+    }
+}
+
 scope_get :: proc(identifier: string) -> (sym: Symbol, ok: bool) {
     ok = false
 
@@ -1035,6 +1045,7 @@ scope_get :: proc(identifier: string) -> (sym: Symbol, ok: bool) {
         if identifier in scope {
             ok = true
             sym = scope[identifier]
+            return
         }
     }
     return
@@ -1050,8 +1061,7 @@ scope_add :: proc(identifier: string, sym: Symbol) {
 walker_interp :: proc(ast: ^Ast) -> f64 {
     using fmt
     walker :: walker_interp
-    val : f64=0
-
+    val : f64 = 0
 
     switch ast.kind {
 
@@ -1093,14 +1103,15 @@ walker_interp :: proc(ast: ^Ast) -> f64 {
                 msg := "Tried to make a function call with compound expression, we only allow simple identifier for look up symbol table simplicity reasons"
                 error(expr.open, msg)
             }
+
             fn_identifier := cast(^Expr_Identifier)expr.left
             fn_symbol, ok := scope_get(fn_identifier.identifier.identifier)
             if !ok {
                 error(fn_identifier.identifier, tprintf("Function `%v` does not exist in this scope", fn_identifier.identifier.identifier))
             }
-            fn_scope := Scope{}
+
             params_len := len(fn_symbol.params)
-            args_len := len(expr.exprs)
+            args_len   := len(expr.exprs)
             /* we allow passing more just for kicks */
             if  args_len < params_len  {
                 msg := tprintf(
@@ -1108,13 +1119,15 @@ walker_interp :: proc(ast: ^Ast) -> f64 {
                     fn_identifier.identifier.identifier, params_len, args_len
                 )
                 error(fn_identifier.identifier, msg)
-
             } 
+
+            fn_scope := Scope{}
             for param, idx in fn_symbol.params {
                 sym := fn_scope[param.identifier] 
                 sym.val = walker(expr.exprs[idx])
                 fn_scope[param.identifier]  = sym
             }
+
             scope_enter(fn_scope)
             val = walker(fn_symbol.body)
             scope_exit()
@@ -1139,7 +1152,7 @@ walker_interp :: proc(ast: ^Ast) -> f64 {
             if expr.op.kind == '-' {
                 val = -val
             } else if expr.op.kind == '!' {
-                val = math.cos(val)
+                val = math.sin(val)
             } else if expr.op.kind == '~' {
                 val -= 1
             }
@@ -1148,9 +1161,17 @@ walker_interp :: proc(ast: ^Ast) -> f64 {
             expr := cast(^Expr_Postfix)ast;
             val = walker(expr.left)
             if expr.op.kind == '!' {
-                val = math.sin(val)
+                val = math.cos(val)
             } else if expr.op.kind == '~' {
                 val += 1
+            }
+        case Expr_Mixfix:
+            expr := cast(^Expr_Mixfix)ast;
+            val = walker(expr.left)
+            if val != f64(0)  && val != f64(-0) {
+                val = walker(expr.mid)
+            } else {
+                val = walker(expr.right)
             }
 
         case Expr_Grouped:
@@ -1171,7 +1192,13 @@ walker_interp :: proc(ast: ^Ast) -> f64 {
                 val = left / right
             } else if expr.op.kind == '^' {
                 val = math.pow(left, right)
+            } else if expr.op.kind == 'k' && expr.op.keyword  == "eq" {
+                val = 0
+                if left == right  {
+                    val = 1
+                }
             }
+
 
         case:
             assert(false,"walker_interp generic case")
@@ -1240,6 +1267,12 @@ walker_paren :: proc(ast: ^Ast) -> string {
             val = walker(ast.left)
             val = fmt.tprint("(", val, ast.op.kind, ")" , sep="")
 
+        case Expr_Infix:
+            ast := cast(^Expr_Infix)ast;
+            left  := walker(ast.left)
+            right := walker(ast.right)
+            val = fmt.tprint("(", left, ' ', ast.op.kind, ' ', right, ")", sep="")
+
         case Expr_Grouped:
             ast := cast(^Expr_Grouped)ast;
             val = walker(ast.expr)
@@ -1263,11 +1296,6 @@ walker_paren :: proc(ast: ^Ast) -> string {
             }
             val = fmt.tprint(val,")", sep="")
 
-        case Expr_Infix:
-            ast := cast(^Expr_Infix)ast;
-            left  := walker(ast.left)
-            right := walker(ast.right)
-            val = fmt.tprint("(", left, ' ', ast.op.kind, ' ', right, ")", sep="")
         case:
             assert(false,"Unhandled walker parenthesize")
     }
@@ -1285,6 +1313,8 @@ parse :: proc () -> ^Ast {
 reset::proc () {
     tokens = nil
     token_cursor = 0
+    scope_reset()
+    scope_enter()
 }
 
 print_tokens::proc (tokens: []Token) {
@@ -1313,50 +1343,56 @@ print_tokens::proc (tokens: []Token) {
     }
 }
 
-main ::proc() {
-    using fmt
-    ast := test_interp( `
-        b = 4;
-        val = fn(a,b,c,d) a + b; # we have access to outter scope, that is global
-        val(2,2,3,4,5,)() # we allow to pass more
-    `, 2 
-    )
-    test_all()
+main :: proc() {
+    // test_all()
+
+    test(`
+        fact = fn(a) a eq 1 ? 1: fact(a-1);
+        fact(2)
+    `, math.tan(f64(98)))
     result()
 }
 
 
-/* -------------------- Tests ------------------- */
+/*-------------------------------------------------------------------------------------------------*
+ *---------------------------------------- Tests --------------------------------------------------*
+ *-------------------------------------------------------------------------------------------------*
+*/
+
 tests_passed := 0
 tests_total := 0 
 tests_failed := [dynamic]string{}
 
-test :: proc(input, expected: string, should_error:=false) -> ^Ast{
-    reset()
-    tests_total += 1 
-
-    src := transmute([]u8)input
-
-    tokens = lex(src)
-    print_tokens(tokens)
-
-    ast := parse()
-    walker_print(ast)
-    output := walker_paren(ast)
-    if output == expected {
-        tests_passed += 1
-    } else {
-        if should_error { 
-            tests_passed += 1
-        } else {
-            append(&tests_failed, fmt.tprintf("input %v: \n\texpected:\n\t\t%v\n\tgot:\n\t\t%v", input, expected, output))
-        }
-    }
-    return ast
+add_test_error :: proc(input, expected, output: string) {
+    append(&tests_failed, fmt.tprintf("input:\n%v\nexpected:\n%v\ngot:\n%v\n", input, expected, output))
 }
+
+
+test :: proc{test_interp, test_paren}
 
 test_all :: proc() {
     using fmt
+
+    // Assignments and interpretation
+    test(`
+        a = 1;
+        b = 2;
+        c = 3;
+        d = 4;
+
+        val = fn(a,b,c,d) d-c-b-a; # we have access to outter scope, that is global
+        val(a,b,c,d, 2, 4 ,4) # we allow to pass more
+    `, 4-3-2-1)
+
+    test(`
+        cos = fn(a) a!;  # postfix '!' means cossine
+        sin = fn(a) !a;  # prefix '!' means sine
+        tan = fn(a) sin(a)/cos(a); # we have access to functions in outter scope
+
+        val = tan(98);    
+        val 
+    `, math.tan(f64(98)))
+
     // Function call.
     test("a()", "a()")
     test("a(b)", "a(b)")
@@ -1406,6 +1442,30 @@ test_all :: proc() {
     test("(!a)!", "((!a)!)")
 }
 
+test_paren :: proc(input, expected: string, should_error:=false) -> ^Ast{
+    reset()
+    tests_total += 1 
+
+    src := transmute([]u8)input
+
+    tokens = lex(src)
+    print_tokens(tokens)
+
+    ast := parse()
+    walker_print(ast)
+    output := walker_paren(ast)
+    if output == expected {
+        tests_passed += 1
+    } else {
+        if should_error { 
+            tests_passed += 1
+        } else {
+            add_test_error(input, expected, output)
+        }
+    }
+    return ast
+}
+
 test_interp :: proc(input: string, expected: f64) -> ^Ast{
     reset()
     tests_total += 1 
@@ -1415,13 +1475,12 @@ test_interp :: proc(input: string, expected: f64) -> ^Ast{
     ast := parse()
     walker_print(ast)
 
-    scope_enter()
     output := walker_interp(ast)
 
     if  output == expected {
         tests_passed += 1
     } else {
-        append(&tests_failed, fmt.tprintf("input %v: \n\texpected:\n\t\t%v\n\tgot:\n\t\t%v", input, expected, output))
+        add_test_error(input, fmt.tprint(expected), fmt.tprint(output))
     }
     return ast
 }
@@ -1440,7 +1499,6 @@ result :: proc() {
         } else {
             println("Passed all", passed, "tests.")
         }
-        os.exit(0)
     } else {
 
         println("----")
@@ -1457,8 +1515,8 @@ is_letter :: proc(c:u8) -> bool { return unicode.is_letter(rune(c));}
 is_digit  :: proc(c:u8) -> bool { return unicode.is_digit(rune(c)); }
 
 import "core:builtin"
-import "core:unicode"
 import "core:math"
+import "core:unicode"
 import "core:os"
 import str "core:strconv"
 import fmt "core:fmt"
