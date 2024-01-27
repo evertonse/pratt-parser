@@ -6,18 +6,15 @@ package pratt
 */
 
 tests_passed := 0
-tests_total := 0 
+tests_total  := 0 
 tests_failed := [dynamic]string{}
-
-add_test_error :: proc(input, expected, output: string) {
-    append(&tests_failed, fmt.tprintf("input:\n%v\nexpected:\n%v\ngot:\n%v\n", input, expected, output))
-}
 
 test :: proc{test_interp, test_paren}
 
 test_all :: proc() {
     using fmt
 
+    // Recursion
     for num in 1..<10 {
         fib :: proc (n :f64) -> f64 {
             if n <= 1 do return n;
@@ -66,6 +63,7 @@ test_all :: proc() {
         val(a,b,c,d, 2, 4 ,4) # we allow to pass more
     `, 4-3-2-1)
 
+    // Simple Math 
     test(`
         cos = fn(a) a!;  # postfix '!' means cossine
         sin = fn(a) !a;  # prefix '!' means sine
@@ -167,6 +165,11 @@ test_interp :: proc(input: string, expected: f64) -> ^Ast{
     return ast
 }
 
+
+
+add_test_error :: proc(input, expected, output: string) {
+    append(&tests_failed, fmt.tprintf("input:\n%v\nexpected:\n%v\ngot:\n%v\n", input, expected, output))
+}
 
 result :: proc() {
     using fmt
