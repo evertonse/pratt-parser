@@ -1,0 +1,1206 @@
+
+ Start
+   Assign epsilon
+     Expr_Number = 0.001
+   Assign_Function abs = fn(a)
+     Expr_Mixfix ? :
+       Expr_Infix = or
+         Expr_Infix = lt
+           Expr_Identifier = a
+           Expr_Number = 0
+         Expr_Infix = lt
+           Expr_Identifier = a
+           Expr_Prefix = -
+             Expr_Number = 0
+       Expr_Prefix = -
+         Expr_Identifier = a
+       Expr_Identifier = a
+   Assign_Function float_close = fn(a, b)
+     Expr_Mixfix ? :
+       Expr_Infix = lt
+         Expr_Function_Call
+           Expr_Identifier = abs
+           Expr_Infix = -
+             Expr_Identifier = a
+             Expr_Identifier = b
+         Expr_Identifier = epsilon
+       Expr_Number = 1
+       Expr_Number = 0
+   Assign_Function fib = fn(n)
+     Expr_Mixfix ? :
+       Expr_Function_Call
+         Expr_Identifier = float_close
+         Expr_Identifier = n
+         Expr_Number = 0
+       Expr_Number = 0
+       Expr_Mixfix ? :
+         Expr_Function_Call
+           Expr_Identifier = float_close
+           Expr_Identifier = n
+           Expr_Number = 1
+         Expr_Number = 1
+         Expr_Infix = +
+           Expr_Function_Call
+             Expr_Identifier = fib
+             Expr_Infix = -
+               Expr_Identifier = n
+               Expr_Number = 1
+           Expr_Function_Call
+             Expr_Identifier = fib
+             Expr_Infix = -
+               Expr_Identifier = n
+               Expr_Number = 2
+   Expr_Function_Call
+     Expr_Identifier = fib
+     Expr_Number = 1
+
+ Start
+   Assign epsilon
+     Expr_Number = 0.001
+   Assign_Function abs = fn(a)
+     Expr_Mixfix ? :
+       Expr_Infix = or
+         Expr_Infix = lt
+           Expr_Identifier = a
+           Expr_Number = 0
+         Expr_Infix = lt
+           Expr_Identifier = a
+           Expr_Prefix = -
+             Expr_Number = 0
+       Expr_Prefix = -
+         Expr_Identifier = a
+       Expr_Identifier = a
+   Assign_Function float_close = fn(a, b)
+     Expr_Mixfix ? :
+       Expr_Infix = lt
+         Expr_Function_Call
+           Expr_Identifier = abs
+           Expr_Infix = -
+             Expr_Identifier = a
+             Expr_Identifier = b
+         Expr_Identifier = epsilon
+       Expr_Number = 1
+       Expr_Number = 0
+   Assign_Function fib = fn(n)
+     Expr_Mixfix ? :
+       Expr_Function_Call
+         Expr_Identifier = float_close
+         Expr_Identifier = n
+         Expr_Number = 0
+       Expr_Number = 0
+       Expr_Mixfix ? :
+         Expr_Function_Call
+           Expr_Identifier = float_close
+           Expr_Identifier = n
+           Expr_Number = 1
+         Expr_Number = 1
+         Expr_Infix = +
+           Expr_Function_Call
+             Expr_Identifier = fib
+             Expr_Infix = -
+               Expr_Identifier = n
+               Expr_Number = 1
+           Expr_Function_Call
+             Expr_Identifier = fib
+             Expr_Infix = -
+               Expr_Identifier = n
+               Expr_Number = 2
+   Expr_Function_Call
+     Expr_Identifier = fib
+     Expr_Number = 2
+
+ Start
+   Assign epsilon
+     Expr_Number = 0.001
+   Assign_Function abs = fn(a)
+     Expr_Mixfix ? :
+       Expr_Infix = or
+         Expr_Infix = lt
+           Expr_Identifier = a
+           Expr_Number = 0
+         Expr_Infix = lt
+           Expr_Identifier = a
+           Expr_Prefix = -
+             Expr_Number = 0
+       Expr_Prefix = -
+         Expr_Identifier = a
+       Expr_Identifier = a
+   Assign_Function float_close = fn(a, b)
+     Expr_Mixfix ? :
+       Expr_Infix = lt
+         Expr_Function_Call
+           Expr_Identifier = abs
+           Expr_Infix = -
+             Expr_Identifier = a
+             Expr_Identifier = b
+         Expr_Identifier = epsilon
+       Expr_Number = 1
+       Expr_Number = 0
+   Assign_Function fib = fn(n)
+     Expr_Mixfix ? :
+       Expr_Function_Call
+         Expr_Identifier = float_close
+         Expr_Identifier = n
+         Expr_Number = 0
+       Expr_Number = 0
+       Expr_Mixfix ? :
+         Expr_Function_Call
+           Expr_Identifier = float_close
+           Expr_Identifier = n
+           Expr_Number = 1
+         Expr_Number = 1
+         Expr_Infix = +
+           Expr_Function_Call
+             Expr_Identifier = fib
+             Expr_Infix = -
+               Expr_Identifier = n
+               Expr_Number = 1
+           Expr_Function_Call
+             Expr_Identifier = fib
+             Expr_Infix = -
+               Expr_Identifier = n
+               Expr_Number = 2
+   Expr_Function_Call
+     Expr_Identifier = fib
+     Expr_Number = 3
+
+ Start
+   Assign epsilon
+     Expr_Number = 0.001
+   Assign_Function abs = fn(a)
+     Expr_Mixfix ? :
+       Expr_Infix = or
+         Expr_Infix = lt
+           Expr_Identifier = a
+           Expr_Number = 0
+         Expr_Infix = lt
+           Expr_Identifier = a
+           Expr_Prefix = -
+             Expr_Number = 0
+       Expr_Prefix = -
+         Expr_Identifier = a
+       Expr_Identifier = a
+   Assign_Function float_close = fn(a, b)
+     Expr_Mixfix ? :
+       Expr_Infix = lt
+         Expr_Function_Call
+           Expr_Identifier = abs
+           Expr_Infix = -
+             Expr_Identifier = a
+             Expr_Identifier = b
+         Expr_Identifier = epsilon
+       Expr_Number = 1
+       Expr_Number = 0
+   Assign_Function fib = fn(n)
+     Expr_Mixfix ? :
+       Expr_Function_Call
+         Expr_Identifier = float_close
+         Expr_Identifier = n
+         Expr_Number = 0
+       Expr_Number = 0
+       Expr_Mixfix ? :
+         Expr_Function_Call
+           Expr_Identifier = float_close
+           Expr_Identifier = n
+           Expr_Number = 1
+         Expr_Number = 1
+         Expr_Infix = +
+           Expr_Function_Call
+             Expr_Identifier = fib
+             Expr_Infix = -
+               Expr_Identifier = n
+               Expr_Number = 1
+           Expr_Function_Call
+             Expr_Identifier = fib
+             Expr_Infix = -
+               Expr_Identifier = n
+               Expr_Number = 2
+   Expr_Function_Call
+     Expr_Identifier = fib
+     Expr_Number = 4
+
+ Start
+   Assign epsilon
+     Expr_Number = 0.001
+   Assign_Function abs = fn(a)
+     Expr_Mixfix ? :
+       Expr_Infix = or
+         Expr_Infix = lt
+           Expr_Identifier = a
+           Expr_Number = 0
+         Expr_Infix = lt
+           Expr_Identifier = a
+           Expr_Prefix = -
+             Expr_Number = 0
+       Expr_Prefix = -
+         Expr_Identifier = a
+       Expr_Identifier = a
+   Assign_Function float_close = fn(a, b)
+     Expr_Mixfix ? :
+       Expr_Infix = lt
+         Expr_Function_Call
+           Expr_Identifier = abs
+           Expr_Infix = -
+             Expr_Identifier = a
+             Expr_Identifier = b
+         Expr_Identifier = epsilon
+       Expr_Number = 1
+       Expr_Number = 0
+   Assign_Function fib = fn(n)
+     Expr_Mixfix ? :
+       Expr_Function_Call
+         Expr_Identifier = float_close
+         Expr_Identifier = n
+         Expr_Number = 0
+       Expr_Number = 0
+       Expr_Mixfix ? :
+         Expr_Function_Call
+           Expr_Identifier = float_close
+           Expr_Identifier = n
+           Expr_Number = 1
+         Expr_Number = 1
+         Expr_Infix = +
+           Expr_Function_Call
+             Expr_Identifier = fib
+             Expr_Infix = -
+               Expr_Identifier = n
+               Expr_Number = 1
+           Expr_Function_Call
+             Expr_Identifier = fib
+             Expr_Infix = -
+               Expr_Identifier = n
+               Expr_Number = 2
+   Expr_Function_Call
+     Expr_Identifier = fib
+     Expr_Number = 5
+
+ Start
+   Assign epsilon
+     Expr_Number = 0.001
+   Assign_Function abs = fn(a)
+     Expr_Mixfix ? :
+       Expr_Infix = or
+         Expr_Infix = lt
+           Expr_Identifier = a
+           Expr_Number = 0
+         Expr_Infix = lt
+           Expr_Identifier = a
+           Expr_Prefix = -
+             Expr_Number = 0
+       Expr_Prefix = -
+         Expr_Identifier = a
+       Expr_Identifier = a
+   Assign_Function float_close = fn(a, b)
+     Expr_Mixfix ? :
+       Expr_Infix = lt
+         Expr_Function_Call
+           Expr_Identifier = abs
+           Expr_Infix = -
+             Expr_Identifier = a
+             Expr_Identifier = b
+         Expr_Identifier = epsilon
+       Expr_Number = 1
+       Expr_Number = 0
+   Assign_Function fib = fn(n)
+     Expr_Mixfix ? :
+       Expr_Function_Call
+         Expr_Identifier = float_close
+         Expr_Identifier = n
+         Expr_Number = 0
+       Expr_Number = 0
+       Expr_Mixfix ? :
+         Expr_Function_Call
+           Expr_Identifier = float_close
+           Expr_Identifier = n
+           Expr_Number = 1
+         Expr_Number = 1
+         Expr_Infix = +
+           Expr_Function_Call
+             Expr_Identifier = fib
+             Expr_Infix = -
+               Expr_Identifier = n
+               Expr_Number = 1
+           Expr_Function_Call
+             Expr_Identifier = fib
+             Expr_Infix = -
+               Expr_Identifier = n
+               Expr_Number = 2
+   Expr_Function_Call
+     Expr_Identifier = fib
+     Expr_Number = 6
+
+ Start
+   Assign epsilon
+     Expr_Number = 0.001
+   Assign_Function abs = fn(a)
+     Expr_Mixfix ? :
+       Expr_Infix = or
+         Expr_Infix = lt
+           Expr_Identifier = a
+           Expr_Number = 0
+         Expr_Infix = lt
+           Expr_Identifier = a
+           Expr_Prefix = -
+             Expr_Number = 0
+       Expr_Prefix = -
+         Expr_Identifier = a
+       Expr_Identifier = a
+   Assign_Function float_close = fn(a, b)
+     Expr_Mixfix ? :
+       Expr_Infix = lt
+         Expr_Function_Call
+           Expr_Identifier = abs
+           Expr_Infix = -
+             Expr_Identifier = a
+             Expr_Identifier = b
+         Expr_Identifier = epsilon
+       Expr_Number = 1
+       Expr_Number = 0
+   Assign_Function fib = fn(n)
+     Expr_Mixfix ? :
+       Expr_Function_Call
+         Expr_Identifier = float_close
+         Expr_Identifier = n
+         Expr_Number = 0
+       Expr_Number = 0
+       Expr_Mixfix ? :
+         Expr_Function_Call
+           Expr_Identifier = float_close
+           Expr_Identifier = n
+           Expr_Number = 1
+         Expr_Number = 1
+         Expr_Infix = +
+           Expr_Function_Call
+             Expr_Identifier = fib
+             Expr_Infix = -
+               Expr_Identifier = n
+               Expr_Number = 1
+           Expr_Function_Call
+             Expr_Identifier = fib
+             Expr_Infix = -
+               Expr_Identifier = n
+               Expr_Number = 2
+   Expr_Function_Call
+     Expr_Identifier = fib
+     Expr_Number = 7
+
+ Start
+   Assign epsilon
+     Expr_Number = 0.001
+   Assign_Function abs = fn(a)
+     Expr_Mixfix ? :
+       Expr_Infix = or
+         Expr_Infix = lt
+           Expr_Identifier = a
+           Expr_Number = 0
+         Expr_Infix = lt
+           Expr_Identifier = a
+           Expr_Prefix = -
+             Expr_Number = 0
+       Expr_Prefix = -
+         Expr_Identifier = a
+       Expr_Identifier = a
+   Assign_Function float_close = fn(a, b)
+     Expr_Mixfix ? :
+       Expr_Infix = lt
+         Expr_Function_Call
+           Expr_Identifier = abs
+           Expr_Infix = -
+             Expr_Identifier = a
+             Expr_Identifier = b
+         Expr_Identifier = epsilon
+       Expr_Number = 1
+       Expr_Number = 0
+   Assign_Function fib = fn(n)
+     Expr_Mixfix ? :
+       Expr_Function_Call
+         Expr_Identifier = float_close
+         Expr_Identifier = n
+         Expr_Number = 0
+       Expr_Number = 0
+       Expr_Mixfix ? :
+         Expr_Function_Call
+           Expr_Identifier = float_close
+           Expr_Identifier = n
+           Expr_Number = 1
+         Expr_Number = 1
+         Expr_Infix = +
+           Expr_Function_Call
+             Expr_Identifier = fib
+             Expr_Infix = -
+               Expr_Identifier = n
+               Expr_Number = 1
+           Expr_Function_Call
+             Expr_Identifier = fib
+             Expr_Infix = -
+               Expr_Identifier = n
+               Expr_Number = 2
+   Expr_Function_Call
+     Expr_Identifier = fib
+     Expr_Number = 8
+
+ Start
+   Assign epsilon
+     Expr_Number = 0.001
+   Assign_Function abs = fn(a)
+     Expr_Mixfix ? :
+       Expr_Infix = or
+         Expr_Infix = lt
+           Expr_Identifier = a
+           Expr_Number = 0
+         Expr_Infix = lt
+           Expr_Identifier = a
+           Expr_Prefix = -
+             Expr_Number = 0
+       Expr_Prefix = -
+         Expr_Identifier = a
+       Expr_Identifier = a
+   Assign_Function float_close = fn(a, b)
+     Expr_Mixfix ? :
+       Expr_Infix = lt
+         Expr_Function_Call
+           Expr_Identifier = abs
+           Expr_Infix = -
+             Expr_Identifier = a
+             Expr_Identifier = b
+         Expr_Identifier = epsilon
+       Expr_Number = 1
+       Expr_Number = 0
+   Assign_Function fib = fn(n)
+     Expr_Mixfix ? :
+       Expr_Function_Call
+         Expr_Identifier = float_close
+         Expr_Identifier = n
+         Expr_Number = 0
+       Expr_Number = 0
+       Expr_Mixfix ? :
+         Expr_Function_Call
+           Expr_Identifier = float_close
+           Expr_Identifier = n
+           Expr_Number = 1
+         Expr_Number = 1
+         Expr_Infix = +
+           Expr_Function_Call
+             Expr_Identifier = fib
+             Expr_Infix = -
+               Expr_Identifier = n
+               Expr_Number = 1
+           Expr_Function_Call
+             Expr_Identifier = fib
+             Expr_Infix = -
+               Expr_Identifier = n
+               Expr_Number = 2
+   Expr_Function_Call
+     Expr_Identifier = fib
+     Expr_Number = 9
+
+ Start
+   Assign_Function fact = fn(a)
+     Expr_Mixfix ? :
+       Expr_Infix = eq
+         Expr_Identifier = a
+         Expr_Number = 1
+       Expr_Number = 1
+       Expr_Infix = *
+         Expr_Identifier = a
+         Expr_Function_Call
+           Expr_Identifier = fact
+           Expr_Infix = -
+             Expr_Identifier = a
+             Expr_Number = 1
+   Expr_Function_Call
+     Expr_Identifier = fact
+     Expr_Number = 1
+
+ Start
+   Assign_Function fact = fn(a)
+     Expr_Mixfix ? :
+       Expr_Infix = eq
+         Expr_Identifier = a
+         Expr_Number = 1
+       Expr_Number = 1
+       Expr_Infix = *
+         Expr_Identifier = a
+         Expr_Function_Call
+           Expr_Identifier = fact
+           Expr_Infix = -
+             Expr_Identifier = a
+             Expr_Number = 1
+   Expr_Function_Call
+     Expr_Identifier = fact
+     Expr_Number = 2
+
+ Start
+   Assign_Function fact = fn(a)
+     Expr_Mixfix ? :
+       Expr_Infix = eq
+         Expr_Identifier = a
+         Expr_Number = 1
+       Expr_Number = 1
+       Expr_Infix = *
+         Expr_Identifier = a
+         Expr_Function_Call
+           Expr_Identifier = fact
+           Expr_Infix = -
+             Expr_Identifier = a
+             Expr_Number = 1
+   Expr_Function_Call
+     Expr_Identifier = fact
+     Expr_Number = 3
+
+ Start
+   Assign_Function fact = fn(a)
+     Expr_Mixfix ? :
+       Expr_Infix = eq
+         Expr_Identifier = a
+         Expr_Number = 1
+       Expr_Number = 1
+       Expr_Infix = *
+         Expr_Identifier = a
+         Expr_Function_Call
+           Expr_Identifier = fact
+           Expr_Infix = -
+             Expr_Identifier = a
+             Expr_Number = 1
+   Expr_Function_Call
+     Expr_Identifier = fact
+     Expr_Number = 4
+
+ Start
+   Assign_Function fact = fn(a)
+     Expr_Mixfix ? :
+       Expr_Infix = eq
+         Expr_Identifier = a
+         Expr_Number = 1
+       Expr_Number = 1
+       Expr_Infix = *
+         Expr_Identifier = a
+         Expr_Function_Call
+           Expr_Identifier = fact
+           Expr_Infix = -
+             Expr_Identifier = a
+             Expr_Number = 1
+   Expr_Function_Call
+     Expr_Identifier = fact
+     Expr_Number = 5
+
+ Start
+   Assign_Function fact = fn(a)
+     Expr_Mixfix ? :
+       Expr_Infix = eq
+         Expr_Identifier = a
+         Expr_Number = 1
+       Expr_Number = 1
+       Expr_Infix = *
+         Expr_Identifier = a
+         Expr_Function_Call
+           Expr_Identifier = fact
+           Expr_Infix = -
+             Expr_Identifier = a
+             Expr_Number = 1
+   Expr_Function_Call
+     Expr_Identifier = fact
+     Expr_Number = 6
+
+ Start
+   Assign_Function fact = fn(a)
+     Expr_Mixfix ? :
+       Expr_Infix = eq
+         Expr_Identifier = a
+         Expr_Number = 1
+       Expr_Number = 1
+       Expr_Infix = *
+         Expr_Identifier = a
+         Expr_Function_Call
+           Expr_Identifier = fact
+           Expr_Infix = -
+             Expr_Identifier = a
+             Expr_Number = 1
+   Expr_Function_Call
+     Expr_Identifier = fact
+     Expr_Number = 7
+
+ Start
+   Assign_Function fact = fn(a)
+     Expr_Mixfix ? :
+       Expr_Infix = eq
+         Expr_Identifier = a
+         Expr_Number = 1
+       Expr_Number = 1
+       Expr_Infix = *
+         Expr_Identifier = a
+         Expr_Function_Call
+           Expr_Identifier = fact
+           Expr_Infix = -
+             Expr_Identifier = a
+             Expr_Number = 1
+   Expr_Function_Call
+     Expr_Identifier = fact
+     Expr_Number = 8
+
+ Start
+   Assign_Function fact = fn(a)
+     Expr_Mixfix ? :
+       Expr_Infix = eq
+         Expr_Identifier = a
+         Expr_Number = 1
+       Expr_Number = 1
+       Expr_Infix = *
+         Expr_Identifier = a
+         Expr_Function_Call
+           Expr_Identifier = fact
+           Expr_Infix = -
+             Expr_Identifier = a
+             Expr_Number = 1
+   Expr_Function_Call
+     Expr_Identifier = fact
+     Expr_Number = 9
+
+ Start
+   Assign_Function fact = fn(a)
+     Expr_Mixfix ? :
+       Expr_Infix = eq
+         Expr_Identifier = a
+         Expr_Number = 1
+       Expr_Number = 1
+       Expr_Infix = *
+         Expr_Identifier = a
+         Expr_Function_Call
+           Expr_Identifier = fact
+           Expr_Infix = -
+             Expr_Identifier = a
+             Expr_Number = 1
+   Expr_Function_Call
+     Expr_Identifier = fact
+     Expr_Number = 10
+
+ Start
+   Assign_Function fact = fn(a)
+     Expr_Mixfix ? :
+       Expr_Infix = eq
+         Expr_Identifier = a
+         Expr_Number = 1
+       Expr_Number = 1
+       Expr_Infix = *
+         Expr_Identifier = a
+         Expr_Function_Call
+           Expr_Identifier = fact
+           Expr_Infix = -
+             Expr_Identifier = a
+             Expr_Number = 1
+   Expr_Function_Call
+     Expr_Identifier = fact
+     Expr_Number = 11
+
+ Start
+   Assign_Function fact = fn(a)
+     Expr_Mixfix ? :
+       Expr_Infix = eq
+         Expr_Identifier = a
+         Expr_Number = 1
+       Expr_Number = 1
+       Expr_Infix = *
+         Expr_Identifier = a
+         Expr_Function_Call
+           Expr_Identifier = fact
+           Expr_Infix = -
+             Expr_Identifier = a
+             Expr_Number = 1
+   Expr_Function_Call
+     Expr_Identifier = fact
+     Expr_Number = 12
+
+ Start
+   Assign_Function fact = fn(a)
+     Expr_Mixfix ? :
+       Expr_Infix = eq
+         Expr_Identifier = a
+         Expr_Number = 1
+       Expr_Number = 1
+       Expr_Infix = *
+         Expr_Identifier = a
+         Expr_Function_Call
+           Expr_Identifier = fact
+           Expr_Infix = -
+             Expr_Identifier = a
+             Expr_Number = 1
+   Expr_Function_Call
+     Expr_Identifier = fact
+     Expr_Number = 13
+
+ Start
+   Assign_Function fact = fn(a)
+     Expr_Mixfix ? :
+       Expr_Infix = eq
+         Expr_Identifier = a
+         Expr_Number = 1
+       Expr_Number = 1
+       Expr_Infix = *
+         Expr_Identifier = a
+         Expr_Function_Call
+           Expr_Identifier = fact
+           Expr_Infix = -
+             Expr_Identifier = a
+             Expr_Number = 1
+   Expr_Function_Call
+     Expr_Identifier = fact
+     Expr_Number = 14
+
+ Start
+   Assign_Function fact = fn(a)
+     Expr_Mixfix ? :
+       Expr_Infix = eq
+         Expr_Identifier = a
+         Expr_Number = 1
+       Expr_Number = 1
+       Expr_Infix = *
+         Expr_Identifier = a
+         Expr_Function_Call
+           Expr_Identifier = fact
+           Expr_Infix = -
+             Expr_Identifier = a
+             Expr_Number = 1
+   Expr_Function_Call
+     Expr_Identifier = fact
+     Expr_Number = 15
+
+ Start
+   Assign_Function fact = fn(a)
+     Expr_Mixfix ? :
+       Expr_Infix = eq
+         Expr_Identifier = a
+         Expr_Number = 1
+       Expr_Number = 1
+       Expr_Infix = *
+         Expr_Identifier = a
+         Expr_Function_Call
+           Expr_Identifier = fact
+           Expr_Infix = -
+             Expr_Identifier = a
+             Expr_Number = 1
+   Expr_Function_Call
+     Expr_Identifier = fact
+     Expr_Number = 16
+
+ Start
+   Assign_Function fact = fn(a)
+     Expr_Mixfix ? :
+       Expr_Infix = eq
+         Expr_Identifier = a
+         Expr_Number = 1
+       Expr_Number = 1
+       Expr_Infix = *
+         Expr_Identifier = a
+         Expr_Function_Call
+           Expr_Identifier = fact
+           Expr_Infix = -
+             Expr_Identifier = a
+             Expr_Number = 1
+   Expr_Function_Call
+     Expr_Identifier = fact
+     Expr_Number = 17
+
+ Start
+   Assign_Function fact = fn(a)
+     Expr_Mixfix ? :
+       Expr_Infix = eq
+         Expr_Identifier = a
+         Expr_Number = 1
+       Expr_Number = 1
+       Expr_Infix = *
+         Expr_Identifier = a
+         Expr_Function_Call
+           Expr_Identifier = fact
+           Expr_Infix = -
+             Expr_Identifier = a
+             Expr_Number = 1
+   Expr_Function_Call
+     Expr_Identifier = fact
+     Expr_Number = 18
+
+ Start
+   Assign_Function fact = fn(a)
+     Expr_Mixfix ? :
+       Expr_Infix = eq
+         Expr_Identifier = a
+         Expr_Number = 1
+       Expr_Number = 1
+       Expr_Infix = *
+         Expr_Identifier = a
+         Expr_Function_Call
+           Expr_Identifier = fact
+           Expr_Infix = -
+             Expr_Identifier = a
+             Expr_Number = 1
+   Expr_Function_Call
+     Expr_Identifier = fact
+     Expr_Number = 19
+
+ Start
+   Assign_Function fact = fn(a)
+     Expr_Mixfix ? :
+       Expr_Infix = eq
+         Expr_Identifier = a
+         Expr_Number = 1
+       Expr_Number = 1
+       Expr_Infix = *
+         Expr_Identifier = a
+         Expr_Function_Call
+           Expr_Identifier = fact
+           Expr_Infix = -
+             Expr_Identifier = a
+             Expr_Number = 1
+   Expr_Function_Call
+     Expr_Identifier = fact
+     Expr_Number = 20
+
+ Start
+   Assign a
+     Expr_Number = 1
+   Assign b
+     Expr_Number = 2
+   Assign c
+     Expr_Number = 3
+   Assign d
+     Expr_Number = 4
+   Assign_Function val = fn(a, b, c, d)
+     Expr_Infix = -
+       Expr_Infix = -
+         Expr_Infix = -
+           Expr_Identifier = d
+           Expr_Identifier = c
+         Expr_Identifier = b
+       Expr_Identifier = a
+   Expr_Function_Call
+     Expr_Identifier = val
+     Expr_Identifier = a
+     Expr_Identifier = b
+     Expr_Identifier = c
+     Expr_Identifier = d
+     Expr_Number = 2
+     Expr_Number = 4
+     Expr_Number = 4
+
+ Start
+   Assign_Function cos = fn(a)
+     Expr_Postfix = !
+       Expr_Identifier = a
+   Assign_Function sin = fn(a)
+     Expr_Prefix = !
+       Expr_Identifier = a
+   Assign_Function tan = fn(a)
+     Expr_Infix = /
+       Expr_Function_Call
+         Expr_Identifier = sin
+         Expr_Identifier = a
+       Expr_Function_Call
+         Expr_Identifier = cos
+         Expr_Identifier = a
+   Assign val
+     Expr_Function_Call
+       Expr_Identifier = tan
+       Expr_Number = 98
+   Expr_Identifier = val
+['1', 'k', '2', 'k', '3', 'k', '4']
+
+ Start
+   Expr_Infix = or
+     Expr_Infix = or
+       Expr_Number = 1
+       Expr_Infix = and
+         Expr_Number = 2
+         Expr_Number = 3
+     Expr_Number = 4
+['1', 'k', '2', 'k', '1', 'k', '2']
+
+ Start
+   Expr_Infix = eq
+     Expr_Infix = gt
+       Expr_Number = 1
+       Expr_Number = 2
+     Expr_Infix = lt
+       Expr_Number = 1
+       Expr_Number = 2
+['1', 'k', '2', 'k', '1', 'k', '2', 'k', '2']
+
+ Start
+   Expr_Infix = or
+     Expr_Infix = gt
+       Expr_Number = 1
+       Expr_Number = 2
+     Expr_Infix = and
+       Expr_Infix = lt
+         Expr_Number = 1
+         Expr_Number = 2
+       Expr_Number = 2
+['1', 'k', '2', 'k', '2', 'k', '1', 'k', '3', 'k', '4', 'k', '4', 'k', '2']
+
+ Start
+   Expr_Infix = eq
+     Expr_Infix = or
+       Expr_Infix = gt
+         Expr_Number = 1
+         Expr_Number = 2
+       Expr_Infix = lt
+         Expr_Number = 2
+         Expr_Number = 1
+     Expr_Infix = and
+       Expr_Infix = lt
+         Expr_Number = 3
+         Expr_Number = 4
+       Expr_Infix = gt
+         Expr_Number = 4
+         Expr_Number = 2
+['1', '+', '2', 'k', '2', '*', '3']
+
+ Start
+   Expr_Infix = gt
+     Expr_Infix = +
+       Expr_Number = 1
+       Expr_Number = 2
+     Expr_Infix = *
+       Expr_Number = 2
+       Expr_Number = 3
+['1', 'k', '2', '?', '3', ':', '4']
+
+ Start
+   Expr_Mixfix ? :
+     Expr_Infix = eq
+       Expr_Number = 1
+       Expr_Number = 2
+     Expr_Number = 3
+     Expr_Number = 4
+['a', '(', ')']
+
+ Start
+   Expr_Function_Call
+     Expr_Identifier = a
+['a', '(', 'b', ')']
+
+ Start
+   Expr_Function_Call
+     Expr_Identifier = a
+     Expr_Identifier = b
+['a', '(', 'b', ',', 'c', ')']
+
+ Start
+   Expr_Function_Call
+     Expr_Identifier = a
+     Expr_Identifier = b
+     Expr_Identifier = c
+['a', '(', 'b', ')', '(', 'c', ')']
+
+ Start
+   Expr_Function_Call
+     Expr_Function_Call
+       Expr_Identifier = a
+       Expr_Identifier = b
+     Expr_Identifier = c
+['a', '(', 'b', ')', '+', 'c', '(', 'd', ')']
+
+ Start
+   Expr_Infix = +
+     Expr_Function_Call
+       Expr_Identifier = a
+       Expr_Identifier = b
+     Expr_Function_Call
+       Expr_Identifier = c
+       Expr_Identifier = d
+['b', '?', 'c', ':', 'd']
+
+ Start
+   Expr_Mixfix ? :
+     Expr_Identifier = b
+     Expr_Identifier = c
+     Expr_Identifier = d
+['b', '?', 'c', ':', 'd', '?', 'e', ':', 'f']
+
+ Start
+   Expr_Mixfix ? :
+     Expr_Identifier = b
+     Expr_Identifier = c
+     Expr_Mixfix ? :
+       Expr_Identifier = d
+       Expr_Identifier = e
+       Expr_Identifier = f
+['b', '?', 'c', ':', 'd', '?', 'e', ':', 'f', '?', 'g', ':', 'h']
+
+ Start
+   Expr_Mixfix ? :
+     Expr_Identifier = b
+     Expr_Identifier = c
+     Expr_Mixfix ? :
+       Expr_Identifier = d
+       Expr_Identifier = e
+       Expr_Mixfix ? :
+         Expr_Identifier = f
+         Expr_Identifier = g
+         Expr_Identifier = h
+['a', '(', 'b', '?', 'c', ':', 'd', ',', 'e', '+', 'f', ')']
+
+ Start
+   Expr_Function_Call
+     Expr_Identifier = a
+     Expr_Mixfix ? :
+       Expr_Identifier = b
+       Expr_Identifier = c
+       Expr_Identifier = d
+     Expr_Infix = +
+       Expr_Identifier = e
+       Expr_Identifier = f
+['~', '!', '-', '+', 'a']
+
+ Start
+   Expr_Prefix = ~
+     Expr_Prefix = !
+       Expr_Prefix = -
+         Expr_Prefix = +
+           Expr_Identifier = a
+['a', '!', '!', '!']
+
+ Start
+   Expr_Postfix = !
+     Expr_Postfix = !
+       Expr_Postfix = !
+         Expr_Identifier = a
+['!', 'a', '+', 'b']
+
+ Start
+   Expr_Infix = +
+     Expr_Prefix = !
+       Expr_Identifier = a
+     Expr_Identifier = b
+['-', 'a', '*', 'b']
+
+ Start
+   Expr_Infix = *
+     Expr_Prefix = -
+       Expr_Identifier = a
+     Expr_Identifier = b
+['~', 'a', '^', 'b']
+
+ Start
+   Expr_Infix = ^
+     Expr_Prefix = ~
+       Expr_Identifier = a
+     Expr_Identifier = b
+['-', 'a', '!']
+
+ Start
+   Expr_Prefix = -
+     Expr_Postfix = !
+       Expr_Identifier = a
+['!', 'a', '!']
+
+ Start
+   Expr_Prefix = !
+     Expr_Postfix = !
+       Expr_Identifier = a
+['a', '-', 'b', '+', 'c', '*', 'd', '^', 'e', '-', 'f', '/', 'g']
+
+ Start
+   Expr_Infix = -
+     Expr_Infix = +
+       Expr_Infix = -
+         Expr_Identifier = a
+         Expr_Identifier = b
+       Expr_Infix = *
+         Expr_Identifier = c
+         Expr_Infix = ^
+           Expr_Identifier = d
+           Expr_Identifier = e
+     Expr_Infix = /
+       Expr_Identifier = f
+       Expr_Identifier = g
+['-', '1', '^', '2']
+
+ Start
+   Expr_Prefix = -
+     Expr_Infix = ^
+       Expr_Number = 1
+       Expr_Number = 2
+['a', '+', 'b', '-', 'c']
+
+ Start
+   Expr_Infix = -
+     Expr_Infix = +
+       Expr_Identifier = a
+       Expr_Identifier = b
+     Expr_Identifier = c
+['a', '*', 'b', '/', 'c']
+
+ Start
+   Expr_Infix = /
+     Expr_Infix = *
+       Expr_Identifier = a
+       Expr_Identifier = b
+     Expr_Identifier = c
+['a', '^', 'b', '^', 'c']
+
+ Start
+   Expr_Infix = ^
+     Expr_Identifier = a
+     Expr_Infix = ^
+       Expr_Identifier = b
+       Expr_Identifier = c
+['a', '?', 'b', ':', 'c', '?', 'd', ':', 'e']
+
+ Start
+   Expr_Mixfix ? :
+     Expr_Identifier = a
+     Expr_Identifier = b
+     Expr_Mixfix ? :
+       Expr_Identifier = c
+       Expr_Identifier = d
+       Expr_Identifier = e
+['a', '?', 'b', '?', 'c', ':', 'd', ':', 'e']
+
+ Start
+   Expr_Mixfix ? :
+     Expr_Identifier = a
+     Expr_Mixfix ? :
+       Expr_Identifier = b
+       Expr_Identifier = c
+       Expr_Identifier = d
+     Expr_Identifier = e
+['a', '+', 'b', '?', 'c', '*', 'd', ':', 'e', '/', 'f']
+
+ Start
+   Expr_Mixfix ? :
+     Expr_Infix = +
+       Expr_Identifier = a
+       Expr_Identifier = b
+     Expr_Infix = *
+       Expr_Identifier = c
+       Expr_Identifier = d
+     Expr_Infix = /
+       Expr_Identifier = e
+       Expr_Identifier = f
+['a', '+', '(', 'b', '+', 'c', ')', '+', 'd']
+
+ Start
+   Expr_Infix = +
+     Expr_Infix = +
+       Expr_Identifier = a
+       Expr_Grouped
+         Expr_Infix = +
+           Expr_Identifier = b
+           Expr_Identifier = c
+     Expr_Identifier = d
+['a', '^', '(', 'b', '+', 'c', ')']
+
+ Start
+   Expr_Infix = ^
+     Expr_Identifier = a
+     Expr_Grouped
+       Expr_Infix = +
+         Expr_Identifier = b
+         Expr_Identifier = c
+['(', '!', 'a', ')', '!']
+
+ Start
+   Expr_Postfix = !
+     Expr_Grouped
+       Expr_Prefix = !
+         Expr_Identifier = a
+Passed all 64 tests.
