@@ -728,6 +728,7 @@ parse_left_denotations :: proc (left: ^Expr) -> ^Expr {
  . Other code/article examples of pratt parsing (or precedence climbing parsing, to me seems like the same algorithm, no cap):
  .     https://journal.stuffwithstuff.com/2011/03/19/pratt-parsers-expression-parsing-made-easy/
  .     https://github.com/munificent/magpie/blob/master/src/com/stuffwithstuff/magpie/parser/MagpieParser.java
+ .     https://github.com/andychu/pratt-parsing-demo/blob/master/tests.py
  . 
  . This one is a parser for bantam language that has various precedences, we "borrow" tests from there
  .     https://github.com/KubaO/pybantam
