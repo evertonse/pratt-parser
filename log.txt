@@ -1,4 +1,5 @@
 
+['epsilon', '=', '0.001', ';', 'abs', '=', 'k', '(', 'a', ')', 'a', 'k', '0', 'k', 'a', 'k', '-', '0', '?', '-', 'a', ':', 'a', ';', 'float_close', '=', 'k', '(', 'a', ',', 'b', ')', 'abs', '(', 'a', '-', 'b', ')', 'k', 'epsilon', '?', '1', ':', '0', ';', 'fib', '=', 'k', '(', 'n', ')', 'float_close', '(', 'n', ',', '0', ')', '?', '0', ':', 'float_close', '(', 'n', ',', '1', ')', '?', '1', ':', 'fib', '(', 'n', '-', '1', ')', '+', 'fib', '(', 'n', '-', '2', ')', ';', 'fib', '(', '1', ')']
  Start
    Assign epsilon
      Expr_Number = 0.001
@@ -54,6 +55,7 @@
      Expr_Identifier = fib
      Expr_Number = 1
 
+['epsilon', '=', '0.001', ';', 'abs', '=', 'k', '(', 'a', ')', 'a', 'k', '0', 'k', 'a', 'k', '-', '0', '?', '-', 'a', ':', 'a', ';', 'float_close', '=', 'k', '(', 'a', ',', 'b', ')', 'abs', '(', 'a', '-', 'b', ')', 'k', 'epsilon', '?', '1', ':', '0', ';', 'fib', '=', 'k', '(', 'n', ')', 'float_close', '(', 'n', ',', '0', ')', '?', '0', ':', 'float_close', '(', 'n', ',', '1', ')', '?', '1', ':', 'fib', '(', 'n', '-', '1', ')', '+', 'fib', '(', 'n', '-', '2', ')', ';', 'fib', '(', '2', ')']
  Start
    Assign epsilon
      Expr_Number = 0.001
@@ -109,6 +111,7 @@
      Expr_Identifier = fib
      Expr_Number = 2
 
+['epsilon', '=', '0.001', ';', 'abs', '=', 'k', '(', 'a', ')', 'a', 'k', '0', 'k', 'a', 'k', '-', '0', '?', '-', 'a', ':', 'a', ';', 'float_close', '=', 'k', '(', 'a', ',', 'b', ')', 'abs', '(', 'a', '-', 'b', ')', 'k', 'epsilon', '?', '1', ':', '0', ';', 'fib', '=', 'k', '(', 'n', ')', 'float_close', '(', 'n', ',', '0', ')', '?', '0', ':', 'float_close', '(', 'n', ',', '1', ')', '?', '1', ':', 'fib', '(', 'n', '-', '1', ')', '+', 'fib', '(', 'n', '-', '2', ')', ';', 'fib', '(', '3', ')']
  Start
    Assign epsilon
      Expr_Number = 0.001
@@ -164,6 +167,7 @@
      Expr_Identifier = fib
      Expr_Number = 3
 
+['epsilon', '=', '0.001', ';', 'abs', '=', 'k', '(', 'a', ')', 'a', 'k', '0', 'k', 'a', 'k', '-', '0', '?', '-', 'a', ':', 'a', ';', 'float_close', '=', 'k', '(', 'a', ',', 'b', ')', 'abs', '(', 'a', '-', 'b', ')', 'k', 'epsilon', '?', '1', ':', '0', ';', 'fib', '=', 'k', '(', 'n', ')', 'float_close', '(', 'n', ',', '0', ')', '?', '0', ':', 'float_close', '(', 'n', ',', '1', ')', '?', '1', ':', 'fib', '(', 'n', '-', '1', ')', '+', 'fib', '(', 'n', '-', '2', ')', ';', 'fib', '(', '4', ')']
  Start
    Assign epsilon
      Expr_Number = 0.001
@@ -219,6 +223,7 @@
      Expr_Identifier = fib
      Expr_Number = 4
 
+['epsilon', '=', '0.001', ';', 'abs', '=', 'k', '(', 'a', ')', 'a', 'k', '0', 'k', 'a', 'k', '-', '0', '?', '-', 'a', ':', 'a', ';', 'float_close', '=', 'k', '(', 'a', ',', 'b', ')', 'abs', '(', 'a', '-', 'b', ')', 'k', 'epsilon', '?', '1', ':', '0', ';', 'fib', '=', 'k', '(', 'n', ')', 'float_close', '(', 'n', ',', '0', ')', '?', '0', ':', 'float_close', '(', 'n', ',', '1', ')', '?', '1', ':', 'fib', '(', 'n', '-', '1', ')', '+', 'fib', '(', 'n', '-', '2', ')', ';', 'fib', '(', '5', ')']
  Start
    Assign epsilon
      Expr_Number = 0.001
@@ -274,6 +279,7 @@
      Expr_Identifier = fib
      Expr_Number = 5
 
+['epsilon', '=', '0.001', ';', 'abs', '=', 'k', '(', 'a', ')', 'a', 'k', '0', 'k', 'a', 'k', '-', '0', '?', '-', 'a', ':', 'a', ';', 'float_close', '=', 'k', '(', 'a', ',', 'b', ')', 'abs', '(', 'a', '-', 'b', ')', 'k', 'epsilon', '?', '1', ':', '0', ';', 'fib', '=', 'k', '(', 'n', ')', 'float_close', '(', 'n', ',', '0', ')', '?', '0', ':', 'float_close', '(', 'n', ',', '1', ')', '?', '1', ':', 'fib', '(', 'n', '-', '1', ')', '+', 'fib', '(', 'n', '-', '2', ')', ';', 'fib', '(', '6', ')']
  Start
    Assign epsilon
      Expr_Number = 0.001
@@ -329,6 +335,7 @@
      Expr_Identifier = fib
      Expr_Number = 6
 
+['epsilon', '=', '0.001', ';', 'abs', '=', 'k', '(', 'a', ')', 'a', 'k', '0', 'k', 'a', 'k', '-', '0', '?', '-', 'a', ':', 'a', ';', 'float_close', '=', 'k', '(', 'a', ',', 'b', ')', 'abs', '(', 'a', '-', 'b', ')', 'k', 'epsilon', '?', '1', ':', '0', ';', 'fib', '=', 'k', '(', 'n', ')', 'float_close', '(', 'n', ',', '0', ')', '?', '0', ':', 'float_close', '(', 'n', ',', '1', ')', '?', '1', ':', 'fib', '(', 'n', '-', '1', ')', '+', 'fib', '(', 'n', '-', '2', ')', ';', 'fib', '(', '7', ')']
  Start
    Assign epsilon
      Expr_Number = 0.001
@@ -384,6 +391,7 @@
      Expr_Identifier = fib
      Expr_Number = 7
 
+['epsilon', '=', '0.001', ';', 'abs', '=', 'k', '(', 'a', ')', 'a', 'k', '0', 'k', 'a', 'k', '-', '0', '?', '-', 'a', ':', 'a', ';', 'float_close', '=', 'k', '(', 'a', ',', 'b', ')', 'abs', '(', 'a', '-', 'b', ')', 'k', 'epsilon', '?', '1', ':', '0', ';', 'fib', '=', 'k', '(', 'n', ')', 'float_close', '(', 'n', ',', '0', ')', '?', '0', ':', 'float_close', '(', 'n', ',', '1', ')', '?', '1', ':', 'fib', '(', 'n', '-', '1', ')', '+', 'fib', '(', 'n', '-', '2', ')', ';', 'fib', '(', '8', ')']
  Start
    Assign epsilon
      Expr_Number = 0.001
@@ -439,6 +447,7 @@
      Expr_Identifier = fib
      Expr_Number = 8
 
+['epsilon', '=', '0.001', ';', 'abs', '=', 'k', '(', 'a', ')', 'a', 'k', '0', 'k', 'a', 'k', '-', '0', '?', '-', 'a', ':', 'a', ';', 'float_close', '=', 'k', '(', 'a', ',', 'b', ')', 'abs', '(', 'a', '-', 'b', ')', 'k', 'epsilon', '?', '1', ':', '0', ';', 'fib', '=', 'k', '(', 'n', ')', 'float_close', '(', 'n', ',', '0', ')', '?', '0', ':', 'float_close', '(', 'n', ',', '1', ')', '?', '1', ':', 'fib', '(', 'n', '-', '1', ')', '+', 'fib', '(', 'n', '-', '2', ')', ';', 'fib', '(', '9', ')']
  Start
    Assign epsilon
      Expr_Number = 0.001
@@ -494,6 +503,7 @@
      Expr_Identifier = fib
      Expr_Number = 9
 
+['fact', '=', 'k', '(', 'a', ')', 'a', 'k', '1', '?', '1', ':', 'a', '*', 'fact', '(', 'a', '-', '1', ')', ';', 'fact', '(', '1', ')']
  Start
    Assign_Function fact = fn(a)
      Expr_Mixfix ? :
@@ -512,6 +522,7 @@
      Expr_Identifier = fact
      Expr_Number = 1
 
+['fact', '=', 'k', '(', 'a', ')', 'a', 'k', '1', '?', '1', ':', 'a', '*', 'fact', '(', 'a', '-', '1', ')', ';', 'fact', '(', '2', ')']
  Start
    Assign_Function fact = fn(a)
      Expr_Mixfix ? :
@@ -530,6 +541,7 @@
      Expr_Identifier = fact
      Expr_Number = 2
 
+['fact', '=', 'k', '(', 'a', ')', 'a', 'k', '1', '?', '1', ':', 'a', '*', 'fact', '(', 'a', '-', '1', ')', ';', 'fact', '(', '3', ')']
  Start
    Assign_Function fact = fn(a)
      Expr_Mixfix ? :
@@ -548,6 +560,7 @@
      Expr_Identifier = fact
      Expr_Number = 3
 
+['fact', '=', 'k', '(', 'a', ')', 'a', 'k', '1', '?', '1', ':', 'a', '*', 'fact', '(', 'a', '-', '1', ')', ';', 'fact', '(', '4', ')']
  Start
    Assign_Function fact = fn(a)
      Expr_Mixfix ? :
@@ -566,6 +579,7 @@
      Expr_Identifier = fact
      Expr_Number = 4
 
+['fact', '=', 'k', '(', 'a', ')', 'a', 'k', '1', '?', '1', ':', 'a', '*', 'fact', '(', 'a', '-', '1', ')', ';', 'fact', '(', '5', ')']
  Start
    Assign_Function fact = fn(a)
      Expr_Mixfix ? :
@@ -584,6 +598,7 @@
      Expr_Identifier = fact
      Expr_Number = 5
 
+['fact', '=', 'k', '(', 'a', ')', 'a', 'k', '1', '?', '1', ':', 'a', '*', 'fact', '(', 'a', '-', '1', ')', ';', 'fact', '(', '6', ')']
  Start
    Assign_Function fact = fn(a)
      Expr_Mixfix ? :
@@ -602,6 +617,7 @@
      Expr_Identifier = fact
      Expr_Number = 6
 
+['fact', '=', 'k', '(', 'a', ')', 'a', 'k', '1', '?', '1', ':', 'a', '*', 'fact', '(', 'a', '-', '1', ')', ';', 'fact', '(', '7', ')']
  Start
    Assign_Function fact = fn(a)
      Expr_Mixfix ? :
@@ -620,6 +636,7 @@
      Expr_Identifier = fact
      Expr_Number = 7
 
+['fact', '=', 'k', '(', 'a', ')', 'a', 'k', '1', '?', '1', ':', 'a', '*', 'fact', '(', 'a', '-', '1', ')', ';', 'fact', '(', '8', ')']
  Start
    Assign_Function fact = fn(a)
      Expr_Mixfix ? :
@@ -638,6 +655,7 @@
      Expr_Identifier = fact
      Expr_Number = 8
 
+['fact', '=', 'k', '(', 'a', ')', 'a', 'k', '1', '?', '1', ':', 'a', '*', 'fact', '(', 'a', '-', '1', ')', ';', 'fact', '(', '9', ')']
  Start
    Assign_Function fact = fn(a)
      Expr_Mixfix ? :
@@ -656,6 +674,7 @@
      Expr_Identifier = fact
      Expr_Number = 9
 
+['fact', '=', 'k', '(', 'a', ')', 'a', 'k', '1', '?', '1', ':', 'a', '*', 'fact', '(', 'a', '-', '1', ')', ';', 'fact', '(', '10', ')']
  Start
    Assign_Function fact = fn(a)
      Expr_Mixfix ? :
@@ -674,6 +693,7 @@
      Expr_Identifier = fact
      Expr_Number = 10
 
+['fact', '=', 'k', '(', 'a', ')', 'a', 'k', '1', '?', '1', ':', 'a', '*', 'fact', '(', 'a', '-', '1', ')', ';', 'fact', '(', '11', ')']
  Start
    Assign_Function fact = fn(a)
      Expr_Mixfix ? :
@@ -692,6 +712,7 @@
      Expr_Identifier = fact
      Expr_Number = 11
 
+['fact', '=', 'k', '(', 'a', ')', 'a', 'k', '1', '?', '1', ':', 'a', '*', 'fact', '(', 'a', '-', '1', ')', ';', 'fact', '(', '12', ')']
  Start
    Assign_Function fact = fn(a)
      Expr_Mixfix ? :
@@ -710,6 +731,7 @@
      Expr_Identifier = fact
      Expr_Number = 12
 
+['fact', '=', 'k', '(', 'a', ')', 'a', 'k', '1', '?', '1', ':', 'a', '*', 'fact', '(', 'a', '-', '1', ')', ';', 'fact', '(', '13', ')']
  Start
    Assign_Function fact = fn(a)
      Expr_Mixfix ? :
@@ -728,6 +750,7 @@
      Expr_Identifier = fact
      Expr_Number = 13
 
+['fact', '=', 'k', '(', 'a', ')', 'a', 'k', '1', '?', '1', ':', 'a', '*', 'fact', '(', 'a', '-', '1', ')', ';', 'fact', '(', '14', ')']
  Start
    Assign_Function fact = fn(a)
      Expr_Mixfix ? :
@@ -746,6 +769,7 @@
      Expr_Identifier = fact
      Expr_Number = 14
 
+['fact', '=', 'k', '(', 'a', ')', 'a', 'k', '1', '?', '1', ':', 'a', '*', 'fact', '(', 'a', '-', '1', ')', ';', 'fact', '(', '15', ')']
  Start
    Assign_Function fact = fn(a)
      Expr_Mixfix ? :
@@ -764,6 +788,7 @@
      Expr_Identifier = fact
      Expr_Number = 15
 
+['fact', '=', 'k', '(', 'a', ')', 'a', 'k', '1', '?', '1', ':', 'a', '*', 'fact', '(', 'a', '-', '1', ')', ';', 'fact', '(', '16', ')']
  Start
    Assign_Function fact = fn(a)
      Expr_Mixfix ? :
@@ -782,6 +807,7 @@
      Expr_Identifier = fact
      Expr_Number = 16
 
+['fact', '=', 'k', '(', 'a', ')', 'a', 'k', '1', '?', '1', ':', 'a', '*', 'fact', '(', 'a', '-', '1', ')', ';', 'fact', '(', '17', ')']
  Start
    Assign_Function fact = fn(a)
      Expr_Mixfix ? :
@@ -800,6 +826,7 @@
      Expr_Identifier = fact
      Expr_Number = 17
 
+['fact', '=', 'k', '(', 'a', ')', 'a', 'k', '1', '?', '1', ':', 'a', '*', 'fact', '(', 'a', '-', '1', ')', ';', 'fact', '(', '18', ')']
  Start
    Assign_Function fact = fn(a)
      Expr_Mixfix ? :
@@ -818,6 +845,7 @@
      Expr_Identifier = fact
      Expr_Number = 18
 
+['fact', '=', 'k', '(', 'a', ')', 'a', 'k', '1', '?', '1', ':', 'a', '*', 'fact', '(', 'a', '-', '1', ')', ';', 'fact', '(', '19', ')']
  Start
    Assign_Function fact = fn(a)
      Expr_Mixfix ? :
@@ -836,6 +864,7 @@
      Expr_Identifier = fact
      Expr_Number = 19
 
+['fact', '=', 'k', '(', 'a', ')', 'a', 'k', '1', '?', '1', ':', 'a', '*', 'fact', '(', 'a', '-', '1', ')', ';', 'fact', '(', '20', ')']
  Start
    Assign_Function fact = fn(a)
      Expr_Mixfix ? :
@@ -854,6 +883,7 @@
      Expr_Identifier = fact
      Expr_Number = 20
 
+['a', '=', '1', ';', 'b', '=', '2', ';', 'c', '=', '3', ';', 'd', '=', '4', ';', 'val', '=', 'k', '(', 'a', ',', 'b', ',', 'c', ',', 'd', ')', 'd', '-', 'c', '-', 'b', '-', 'a', ';', 'val', '(', 'a', ',', 'b', ',', 'c', ',', 'd', ',', '2', ',', '4', ',', '4', ')']
  Start
    Assign a
      Expr_Number = 1
@@ -881,6 +911,7 @@
      Expr_Number = 4
      Expr_Number = 4
 
+['cos', '=', 'k', '(', 'a', ')', 'a', '!', ';', 'sin', '=', 'k', '(', 'a', ')', '!', 'a', ';', 'tan', '=', 'k', '(', 'a', ')', 'sin', '(', 'a', ')', '/', 'cos', '(', 'a', ')', ';', 'val', '=', 'tan', '(', '98', ')', ';', 'val']
  Start
    Assign_Function cos = fn(a)
      Expr_Postfix = !
@@ -901,8 +932,9 @@
        Expr_Identifier = tan
        Expr_Number = 98
    Expr_Identifier = val
-['1', 'k', '2', 'k', '3', 'k', '4']
 
+
+['1', 'k', '2', 'k', '3', 'k', '4']
  Start
    Expr_Infix = or
      Expr_Infix = or
@@ -911,8 +943,9 @@
          Expr_Number = 2
          Expr_Number = 3
      Expr_Number = 4
-['1', 'k', '2', 'k', '1', 'k', '2']
 
+
+['1', 'k', '2', 'k', '1', 'k', '2']
  Start
    Expr_Infix = eq
      Expr_Infix = gt
@@ -921,8 +954,9 @@
      Expr_Infix = lt
        Expr_Number = 1
        Expr_Number = 2
-['1', 'k', '2', 'k', '1', 'k', '2', 'k', '2']
 
+
+['1', 'k', '2', 'k', '1', 'k', '2', 'k', '2']
  Start
    Expr_Infix = or
      Expr_Infix = gt
@@ -933,8 +967,9 @@
          Expr_Number = 1
          Expr_Number = 2
        Expr_Number = 2
-['1', 'k', '2', 'k', '2', 'k', '1', 'k', '3', 'k', '4', 'k', '4', 'k', '2']
 
+
+['1', 'k', '2', 'k', '2', 'k', '1', 'k', '3', 'k', '4', 'k', '4', 'k', '2']
  Start
    Expr_Infix = eq
      Expr_Infix = or
@@ -951,8 +986,9 @@
        Expr_Infix = gt
          Expr_Number = 4
          Expr_Number = 2
-['1', '+', '2', 'k', '2', '*', '3']
 
+
+['1', '+', '2', 'k', '2', '*', '3']
  Start
    Expr_Infix = gt
      Expr_Infix = +
@@ -961,8 +997,9 @@
      Expr_Infix = *
        Expr_Number = 2
        Expr_Number = 3
-['1', 'k', '2', '?', '3', ':', '4']
 
+
+['1', 'k', '2', '?', '3', ':', '4']
  Start
    Expr_Mixfix ? :
      Expr_Infix = eq
@@ -970,34 +1007,39 @@
        Expr_Number = 2
      Expr_Number = 3
      Expr_Number = 4
-['a', '(', ')']
 
+
+['a', '(', ')']
  Start
    Expr_Function_Call
      Expr_Identifier = a
-['a', '(', 'b', ')']
 
+
+['a', '(', 'b', ')']
  Start
    Expr_Function_Call
      Expr_Identifier = a
      Expr_Identifier = b
-['a', '(', 'b', ',', 'c', ')']
 
+
+['a', '(', 'b', ',', 'c', ')']
  Start
    Expr_Function_Call
      Expr_Identifier = a
      Expr_Identifier = b
      Expr_Identifier = c
-['a', '(', 'b', ')', '(', 'c', ')']
 
+
+['a', '(', 'b', ')', '(', 'c', ')']
  Start
    Expr_Function_Call
      Expr_Function_Call
        Expr_Identifier = a
        Expr_Identifier = b
      Expr_Identifier = c
-['a', '(', 'b', ')', '+', 'c', '(', 'd', ')']
 
+
+['a', '(', 'b', ')', '+', 'c', '(', 'd', ')']
  Start
    Expr_Infix = +
      Expr_Function_Call
@@ -1006,15 +1048,17 @@
      Expr_Function_Call
        Expr_Identifier = c
        Expr_Identifier = d
-['b', '?', 'c', ':', 'd']
 
+
+['b', '?', 'c', ':', 'd']
  Start
    Expr_Mixfix ? :
      Expr_Identifier = b
      Expr_Identifier = c
      Expr_Identifier = d
-['b', '?', 'c', ':', 'd', '?', 'e', ':', 'f']
 
+
+['b', '?', 'c', ':', 'd', '?', 'e', ':', 'f']
  Start
    Expr_Mixfix ? :
      Expr_Identifier = b
@@ -1023,8 +1067,9 @@
        Expr_Identifier = d
        Expr_Identifier = e
        Expr_Identifier = f
-['b', '?', 'c', ':', 'd', '?', 'e', ':', 'f', '?', 'g', ':', 'h']
 
+
+['b', '?', 'c', ':', 'd', '?', 'e', ':', 'f', '?', 'g', ':', 'h']
  Start
    Expr_Mixfix ? :
      Expr_Identifier = b
@@ -1036,8 +1081,9 @@
          Expr_Identifier = f
          Expr_Identifier = g
          Expr_Identifier = h
-['a', '(', 'b', '?', 'c', ':', 'd', ',', 'e', '+', 'f', ')']
 
+
+['a', '(', 'b', '?', 'c', ':', 'd', ',', 'e', '+', 'f', ')']
  Start
    Expr_Function_Call
      Expr_Identifier = a
@@ -1048,56 +1094,64 @@
      Expr_Infix = +
        Expr_Identifier = e
        Expr_Identifier = f
-['~', '!', '-', '+', 'a']
 
+
+['~', '!', '-', '+', 'a']
  Start
    Expr_Prefix = ~
      Expr_Prefix = !
        Expr_Prefix = -
          Expr_Prefix = +
            Expr_Identifier = a
-['a', '!', '!', '!']
 
+
+['a', '!', '!', '!']
  Start
    Expr_Postfix = !
      Expr_Postfix = !
        Expr_Postfix = !
          Expr_Identifier = a
-['!', 'a', '+', 'b']
 
+
+['!', 'a', '+', 'b']
  Start
    Expr_Infix = +
      Expr_Prefix = !
        Expr_Identifier = a
      Expr_Identifier = b
-['-', 'a', '*', 'b']
 
+
+['-', 'a', '*', 'b']
  Start
    Expr_Infix = *
      Expr_Prefix = -
        Expr_Identifier = a
      Expr_Identifier = b
-['~', 'a', '^', 'b']
 
+
+['~', 'a', '^', 'b']
  Start
    Expr_Infix = ^
      Expr_Prefix = ~
        Expr_Identifier = a
      Expr_Identifier = b
-['-', 'a', '!']
 
+
+['-', 'a', '!']
  Start
    Expr_Prefix = -
      Expr_Postfix = !
        Expr_Identifier = a
-['!', 'a', '!']
 
+
+['!', 'a', '!']
  Start
    Expr_Prefix = !
      Expr_Postfix = !
        Expr_Identifier = a
-['a', '-', 'b', '+', 'c', '*', 'd', '^', 'e', '-', 'f', '/', 'g']
 
+
+['a', '-', 'b', '+', 'c', '*', 'd', '^', 'e', '-', 'f', '/', 'g']
  Start
    Expr_Infix = -
      Expr_Infix = +
@@ -1112,39 +1166,44 @@
      Expr_Infix = /
        Expr_Identifier = f
        Expr_Identifier = g
-['-', '1', '^', '2']
 
+
+['-', '1', '^', '2']
  Start
    Expr_Prefix = -
      Expr_Infix = ^
        Expr_Number = 1
        Expr_Number = 2
-['a', '+', 'b', '-', 'c']
 
+
+['a', '+', 'b', '-', 'c']
  Start
    Expr_Infix = -
      Expr_Infix = +
        Expr_Identifier = a
        Expr_Identifier = b
      Expr_Identifier = c
-['a', '*', 'b', '/', 'c']
 
+
+['a', '*', 'b', '/', 'c']
  Start
    Expr_Infix = /
      Expr_Infix = *
        Expr_Identifier = a
        Expr_Identifier = b
      Expr_Identifier = c
-['a', '^', 'b', '^', 'c']
 
+
+['a', '^', 'b', '^', 'c']
  Start
    Expr_Infix = ^
      Expr_Identifier = a
      Expr_Infix = ^
        Expr_Identifier = b
        Expr_Identifier = c
-['a', '?', 'b', ':', 'c', '?', 'd', ':', 'e']
 
+
+['a', '?', 'b', ':', 'c', '?', 'd', ':', 'e']
  Start
    Expr_Mixfix ? :
      Expr_Identifier = a
@@ -1153,8 +1212,9 @@
        Expr_Identifier = c
        Expr_Identifier = d
        Expr_Identifier = e
-['a', '?', 'b', '?', 'c', ':', 'd', ':', 'e']
 
+
+['a', '?', 'b', '?', 'c', ':', 'd', ':', 'e']
  Start
    Expr_Mixfix ? :
      Expr_Identifier = a
@@ -1163,8 +1223,9 @@
        Expr_Identifier = c
        Expr_Identifier = d
      Expr_Identifier = e
-['a', '+', 'b', '?', 'c', '*', 'd', ':', 'e', '/', 'f']
 
+
+['a', '+', 'b', '?', 'c', '*', 'd', ':', 'e', '/', 'f']
  Start
    Expr_Mixfix ? :
      Expr_Infix = +
@@ -1176,8 +1237,9 @@
      Expr_Infix = /
        Expr_Identifier = e
        Expr_Identifier = f
-['a', '+', '(', 'b', '+', 'c', ')', '+', 'd']
 
+
+['a', '+', '(', 'b', '+', 'c', ')', '+', 'd']
  Start
    Expr_Infix = +
      Expr_Infix = +
@@ -1187,8 +1249,9 @@
            Expr_Identifier = b
            Expr_Identifier = c
      Expr_Identifier = d
-['a', '^', '(', 'b', '+', 'c', ')']
 
+
+['a', '^', '(', 'b', '+', 'c', ')']
  Start
    Expr_Infix = ^
      Expr_Identifier = a
@@ -1196,8 +1259,9 @@
        Expr_Infix = +
          Expr_Identifier = b
          Expr_Identifier = c
-['(', '!', 'a', ')', '!']
 
+
+['(', '!', 'a', ')', '!']
  Start
    Expr_Postfix = !
      Expr_Grouped

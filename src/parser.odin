@@ -118,6 +118,7 @@ Token:: struct {
 /* "Pretty" print tokens */
 print_tokens::proc (tokens: []Token) {
     using fmt
+    print('\n')
     {
         print('[')
         for t, idx in tokens {
@@ -138,7 +139,7 @@ print_tokens::proc (tokens: []Token) {
 
             print(", ", sep="")
         }
-        println(']')
+        print(']')
     }
 }
 

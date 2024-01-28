@@ -148,6 +148,7 @@ test_paren :: proc(input, expected: string, should_error:=false) -> ^Ast{
     src := transmute([]u8)input
 
     tokens = lex(src)
+    fmt.println()
     print_tokens(tokens)
 
     ast := parse()
@@ -171,6 +172,8 @@ test_interp :: proc(input: string, expected: f64) -> ^Ast{
 
     src := transmute([]u8)input
     tokens = lex(src)
+    print_tokens(tokens)
+
     ast := parse()
     walker_print(ast)
 
