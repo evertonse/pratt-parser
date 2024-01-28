@@ -83,8 +83,8 @@ Eli precedence parsing:
 
 Hydrogren
 
--     https://www.youtube.com/watch?v=pupdmHjzrTI&list=PLUDlas_Zy_qC7c5tCgTMYq2idyyT241qs&index=2
--     https://github.com/orosmatthew/hydrogen-cpp
+- https://www.youtube.com/watch?v=pupdmHjzrTI&list=PLUDlas_Zy_qC7c5tCgTMYq2idyyT241qs&index=2
+- https://github.com/orosmatthew/hydrogen-cpp
 
 
 
