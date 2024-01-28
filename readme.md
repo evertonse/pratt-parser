@@ -66,3 +66,36 @@ Once I'm in the mood I'll put the precedence table in markdown right here. For n
 ```
 
 
+# Resources I haven't listed on the comments
+
+Great `C` compiler codebase for learning, it uses a recursive descent pratt parser. Code is simply written and fill with comments:
+
+- https://github.com/rui314/chibicc/blob/main/parse.c
+
+
+Great Jonathan Blow talk about how simple it is to make a parser that understand precedence:
+
+- https://youtu.be/fIPO4G42wYE?si=u0dneDYUvYSE-Rz1
+
+Eli precedence parsing:
+
+- https://eli.thegreenplace.net/2010/01/02/top-down-operator-precedence-parsing/
+
+Hydrogren
+
+-     https://www.youtube.com/watch?v=pupdmHjzrTI&list=PLUDlas_Zy_qC7c5tCgTMYq2idyyT241qs&index=2
+-     https://github.com/orosmatthew/hydrogen-cpp
+
+
+
+# Less Related but useful
+
+Paper ``An Incremental Approach to Compiler Construction``, it parser and compile `Scheme` like language
+
+- http://scheme2006.cs.uchicago.edu/11-ghuloum.pdf
+
+
+Multiple Return value implementation 
+
+- https://guenchi.github.io/Scheme/doc/An%20Efficient%20Implementation%20of%20Multiple%20Return%20Values%20in%20Scheme.pdf
+
