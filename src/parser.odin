@@ -67,8 +67,8 @@ KEYWORDS := map[string]Token{
     "eq"  = Token{keyword = "eq",  kind='k'}, // Equality test a eq 2 iff a == 2
     "lt"  = Token{keyword = "lt",  kind='k'}, // Less than
     "gt"  = Token{keyword = "gt",  kind='k'}, // Greater than
-    "or"  = Token{keyword = "or",  kind='k'}, // Greater than
-    "and" = Token{keyword = "and", kind='k'}, // Greater than
+    "or"  = Token{keyword = "or",  kind='k'}, // Or
+    "and" = Token{keyword = "and", kind='k'}, // And
 }
 
 Token:: struct {
@@ -86,7 +86,7 @@ Token:: struct {
     
     /*
      .  line and colum in the source string,
-     .  we only store  the end line and col position for simplicity
+     .  we only store the end line and col position for simplicity
      */
     line, col: i64,
 
@@ -223,8 +223,8 @@ precedence :: proc(token: Token, is_prefix: bool = false) -> i64 {
 
     /*
      . The code below is redundant, as long as the start parse_expr precedence 
-     . is never lower than de default prec, for example token end 
-     . will never pass the check that prec(TOKEN_END) > prec(literally any other token)
+     . is never lower than the default precedence, for example TOKEN_END 
+     . will never pass the check that precedence(TOKEN_END) > prec(literally any other token)
 
     if token.kind == TOKEN_END_KIND  {
         prec = -9000000000
@@ -511,8 +511,8 @@ next :: proc(expects:[]rune = nil) -> Token {
     return curr
 }
 
-TOKEN_END_KIND := rune('e') /* e in 'E'ND */
-TOKEN_END := Token{kind=TOKEN_END_KIND}
+TOKEN_END_KIND := rune('e') /* 'e' as in 'E'ND */
+TOKEN_END      := Token{kind=TOKEN_END_KIND}
 
 peek :: proc(offset:=0) -> Token {
     if token_cursor+offset >= len(tokens)  || token_cursor+offset < 0 {
@@ -660,7 +660,8 @@ parse_left_denotations :: proc (left: ^Expr) -> ^Expr {
 
 
 
-/*
+/*  First take a loop at the function `parse_expr` below this whole comment, then read the following:
+ . 
  .  If next (right) operator in the token stream is higher precedence, if most be resolved first
  .  despite being on the right (after), that means a right leaning sub-tree 
  .  Ex: 1+2*3 , + is on the left, comes first, * is on the right, after
