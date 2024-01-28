@@ -103,3 +103,7 @@ Tree Shaking (dead code elimination)
 
 - https://webpack.js.org/guides/tree-shaking/
 
+Complete spec draft for c++, thousand plus pages, kekw:
+
+- https://www.open-std.org/jtc1/sc22/wg21/docs/papers/2011/n3242.pdf
+
