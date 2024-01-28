@@ -19,7 +19,7 @@ You can infer precedence from the tests in `test.odin`, and change some inputs. 
 
 Once I'm in the mood I'll put the precedence table in markdown right here. For now, that's all folks :P, it has been fun.
 
-```c
+```py
     epsilon = 0.001; # Close by this much
 
     abs = fn(a) a lt 0 or a lt -0 ? -a : a;
@@ -46,7 +46,7 @@ Once I'm in the mood I'll put the precedence table in markdown right here. For n
 ```
 
 
-```c
+```py
         a = 1;
         b = 2;
         c = 3;
@@ -57,7 +57,7 @@ Once I'm in the mood I'll put the precedence table in markdown right here. For n
 
 ```
 
-```c
+```py
     cos = fn(a) a!;  # postfix '!' means cossine
     sin = fn(a) !a;  # prefix '!' means sine
     tan = fn(a) sin(a)/cos(a); # we have access to functions in outter scope

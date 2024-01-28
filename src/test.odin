@@ -73,6 +73,25 @@ test_all :: proc() {
         val 
     `, math.tan(f64(98)))
 
+
+    // Relational operator 
+    /* `and` has priority over `or` */
+    test("1 or 2 and 3 or 4", "((1 or (2 and 3)) or 4)")
+    /* `lt, gt` has priority over `eq` */
+    test("1 gt 2  eq 1 lt 2", "((1 gt 2) eq (1 lt 2))")
+
+    /* `lt, gt` has priority over `and, or` */
+    test("1 gt 2  or 1 lt 2 and 2", "((1 gt 2) or ((1 lt 2) and 2))")
+
+    /* `lt, gt` has priority over `and, or` which they have more prio then `eq` */
+    test("1 gt 2 or 2 lt 1  eq 3 lt 4 and 4 gt 2 ", "(((1 gt 2) or (2 lt 1)) eq ((3 lt 4) and (4 gt 2)))" )
+
+    /* binary operators has bigger prio than `lt, gt` */
+    test("1 + 2 gt 2 * 3 ", "((1 + 2) gt (2 * 3))")
+
+    /*  Ternary `?` has even lower prio than `eq`*/
+    test("1 eq 2 ? 3: 4", "((1 eq 2) ? 3 : 4)")
+
     // Function call.
     test("a()", "a()")
     test("a(b)", "a(b)")

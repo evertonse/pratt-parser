@@ -193,10 +193,12 @@ precedence :: proc(token: Token, is_prefix: bool = false) -> i64 {
                      */
                     case "eq":
                         prec = 2;
-                    case "or", "and":
+                    case "or":
                         prec = 3
-                    case "lt", "gt":
+                    case  "and":
                         prec = 4
+                    case "lt", "gt":
+                        prec = 5
                 }
             case '+': prec = 10  // infix
             case '-': prec = 10  // infix
