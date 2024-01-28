@@ -88,7 +88,7 @@ Hydrogren
 
 
 
-# Less Related but useful
+# Less related but useful for compiler enthusiasts
 
 Paper ``An Incremental Approach to Compiler Construction``, it parser and compile `Scheme` like language
 
@@ -98,4 +98,8 @@ Paper ``An Incremental Approach to Compiler Construction``, it parser and compil
 Multiple Return value implementation 
 
 - https://guenchi.github.io/Scheme/doc/An%20Efficient%20Implementation%20of%20Multiple%20Return%20Values%20in%20Scheme.pdf
+
+Tree Shaking (dead code elimination)
+
+- https://webpack.js.org/guides/tree-shaking/
 
