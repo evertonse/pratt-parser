@@ -68,6 +68,11 @@ Once I'm in the mood I'll put the precedence table in markdown right here. For n
 
 # Resources I haven't listed on the comments
 
+Quote I Like from Crafting Interpreter 
+
+``Predictive parsing gets tricky when you may need to look ahead a large number of tokens to figure out what you’re sitting on.
+In practice, most languages are designed to avoid that. Even in cases where they aren’t, you can usually hack around it without too much pain. If you can parse C++ using recursive descent—which many C++ compilers do—you can parse anything.`` - ending of chapter 6  `https://craftinginterpreters.com/parsing-expressions.html`
+
 Great `C` compiler codebase for learning, it uses a recursive descent pratt parser. Code is simply written and fill with comments:
 
 - https://github.com/rui314/chibicc/blob/main/parse.c
